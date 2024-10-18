@@ -3,7 +3,7 @@ class Domain {
     private $conn;
 
     public function __construct($db) {
-        $this->conn = $db; // Сохраняем соединение с БД
+        $this->conn = $db;
     }
 
     public function getAllDomains() {
@@ -21,6 +21,6 @@ class Domain {
     $stmt = $this->conn->prepare($query);
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC); // Возвращаем все записи как ассоциативный массив
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 }

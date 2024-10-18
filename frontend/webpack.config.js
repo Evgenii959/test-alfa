@@ -5,18 +5,18 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-  entry: './index.js', // Точка входа
+  entry: './index.js',
   output: {
-    filename: 'bundle.js', // Имя скомпилированного файла
-    path: path.resolve(__dirname, 'dist'), // Папка для сборки
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'), 
   },
-  mode: 'development', // Режим сборки
+  mode: 'development',
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'dist'),
     },
-    compress: true, // Сжатие для оптимизации
-    port: 8080, // Порт сервера
+    compress: true,
+    port: 8080,
   },
   module: {
     rules: [
@@ -44,7 +44,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.vue', '.json'], // Теперь это внутри resolve
+    extensions: ['*', '.js', '.vue', '.json'], 
   },
   plugins: [
     new VueLoaderPlugin(),

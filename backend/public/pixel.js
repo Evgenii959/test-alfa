@@ -1,15 +1,13 @@
 window.addEventListener('DOMContentLoaded', () => {
-  // Собираем данные о визите
   const visitData = {
     domain: window.location.hostname,
     userAgent: navigator.userAgent,
     browser: getBrowserInfo(),
     device: getDeviceType(),
     platform: navigator.platform,
-    visit_time: new Date().toISOString().slice(0, 19).replace('T', ' '), // Преобразование формата
+    visit_time: new Date().toISOString().slice(0, 19).replace('T', ' '),
   };
 
-  // Отправляем данные на сервер
   fetch('http://localhost:8000/controllers/visit.php', {
     method: 'POST',
     headers: {
