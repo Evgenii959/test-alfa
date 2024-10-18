@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+  </head>
+  <body>
+    <form id="contactForm" method="POST">
+      <input type="hidden" name="visitId" id="visitId" />
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="text" name="phone" placeholder="Phone" required />
+      <input type="email" name="email" placeholder="Email" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <h2>Saved Contacts</h2>
+    <ul id="contactsList"></ul>
+
+    <script src="pixel.js"></script>
+    <script>
+      function fetchContacts() {
+        fetch('http://localhost:8000/controllers/getContacts.php')
+          .then((response) => response.json())
+          .then((contacts) => {
+            const contactsList = document.getElementById('contactsList');
+            contactsList.innerHTML = ''; 
+
+            contacts.forEach((contact) => {
+              const li = document.createElement('li');
+              li.textContent = `${contact.name} (${contact.phone})`;
+              contactsList.appendChild(li);
+            });
+          })
+          .catch((error) =>
+            console.error('Ошибка при получении контактов:', error)
+          );
+      }
+      window.onload = fetchContacts;
+    </script>
+  </body>
+</html>
